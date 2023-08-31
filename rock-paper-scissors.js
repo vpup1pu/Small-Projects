@@ -1,4 +1,4 @@
-const prompt = require("prompt-sync")();
+//const prompt = require("prompt-sync")();
 function getComputerChoice() {
     let result;
     let number = Math.floor(Math.random()*3);
@@ -85,3 +85,4 @@ function game() {
 }
 
 game();
+
