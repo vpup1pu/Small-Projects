@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tester</title>
-    <script src="app.js" defer></script>
-</head>
-<body>
-    <h1>
-      THE TITLE OF YOUR WEBPAGE
-    </h1>
-    <div id="container"></div>
-    <!-- <button onclick="alert('Hello World')">Click Me</button> -->
-    <!-- <button id="btn">Click Me</button> -->
-    <button id="btn" onclick="alertFunction()">CLICK ME BABY</button>
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script src="app.js"></script>
   </body>
 </html>
