@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Let's play Rock, Paper, Scissors!</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
 </head>
+
 <body>
-   <script src="rock-paper-scissors.js"></script> 
+    <div class="gameDiv">
+        <div class="score">
+            <div class="computerScore">
+                <h2>Computer</h2>
+                <p class="cCounter">0</p>
+            </div>
+            <div class="playerScore">
+                <h2>Player</h2>
+                <p class="pCounter">0</p>
+            </div>
+        </div>
+        <div class="roundChoice">
+            <div class="computerChoice">
+                <h2 id="compChoice">Computer choice: </h2>
+            </div>
+            <div class="playerChoice">
+                <h2>Make your choice: </h2>
+                    <div class="playerButtons">
+                        <button class="playerChoiceBtn" id="R">Rock</button>
+                        <button class="playerChoiceBtn" id="P">Paper</button>
+                        <button class="playerChoiceBtn" id="S">Scissors</button>
+                    </div>
+            </div>
+        </div>
+        <div class="roundsLeft">Rounds Left: 5</div>
+        <div class="resultDiv">
+            <div class="finalResult"></div>
+            <button class="newGameBtn">Restart</button>
+        </div>
+    </div>
+    <script src="rock-paper-scissors.js"></script>
 </body>
+
 </html>
