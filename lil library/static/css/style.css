@@ -210,8 +210,7 @@ input:-webkit-autofill:focus {
 .radio-button__label {
     font-size: 16px; 
     position: relative;
-    top: -2px; 
-    left: 5px; 
+    left: 25px;
 }
 
 .dialog-results{
