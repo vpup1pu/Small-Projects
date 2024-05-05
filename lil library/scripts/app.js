@@ -5,13 +5,14 @@ const myLibrary = [
 const titleInput = document.getElementById("bookTitle");
 const authorInput = document.getElementById("bookAuthor");
 const pagesInput = document.getElementById("bookPages");
-var error = document.getElementById("error");
-var success = document.getElementById("success");
+var error = document.querySelector("error");
+var success = document.querySelector("success");
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
 const closeButton = document.getElementById("closeBtn");
 const addButton = document.getElementById("addBook");
 const resetButton = document.getElementById("resetBtn");
+const display = document.querySelector(".libContainer");
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -19,7 +20,7 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'Read' : 'Not Read Yet'}`;
   };
 }
 
@@ -32,9 +33,6 @@ function bookExists(title, author) {
 }
 
 function inputIsAWord(str) {
-  // if (/\d/.test(str) || /[^\w-]/.test(str)) {
-  //   return false;
-  // }
   if ((str.match(/-/g) || []).length > 1) {
     return false;
   }
@@ -45,8 +43,6 @@ function inputIsAWord(str) {
 }
 
 function addBookToLibrary(title, author, pages, read) {
-  console.log(inputIsAWord(title))
-  console.log(inputIsAWord(author))
   if (isInputValid(title) && isInputValid(author) && isInputValid(pages) && isInputValid(read)) {
     if (inputIsAWord(title) && inputIsAWord(author)) {
       if (!bookExists(title, author)) {
@@ -123,10 +119,19 @@ addButton.addEventListener("click", (event) => {
   addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.value);;
 });
 
-function displayLibrary() {
-  const display = document.querySelector(".libContainer");
-  display.innerHTML = "";
+function removeBook(book, array){
+  const index = array.indexOf(book);
+  array.splice(index, 1);
+  displayLibrary();
+}
 
+function changeStatus(book) {
+  book.read = !book.read;
+  displayLibrary(); // Update the display after changing the status
+}
+
+function displayLibrary() {
+  display.innerHTML = "";
   myLibrary.forEach(book => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("bookCard");
@@ -138,11 +143,18 @@ function displayLibrary() {
     const modifyBtn = document.createElement("button");
     modifyBtn.classList.add("modifyBtn");
     modifyBtn.textContent = "Change Status";
+    modifyBtn.addEventListener("click", () => {
+      const bookIndex = myLibrary.indexOf(book);
+      changeStatus(myLibrary[bookIndex]);
+    });
     cardNav.appendChild(modifyBtn);
 
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("deleteBtn");
     deleteBtn.textContent = "X";
+    deleteBtn.addEventListener("click", ()=>{
+      removeBook(book, myLibrary);
+    });
     cardNav.appendChild(deleteBtn);
 
     const info = document.createElement("div");

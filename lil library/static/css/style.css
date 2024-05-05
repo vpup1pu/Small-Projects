@@ -221,7 +221,7 @@ input:-webkit-autofill:focus {
     gap: 10px;
 }
 
-#error, #success {
+.error, .success {
     font-weight: bolder;
 }
 
@@ -278,19 +278,19 @@ input:-webkit-autofill:focus {
   }
   
   ::-webkit-scrollbar-track {
-    background-color: #8B948B;
-    -webkit-box-shadow: inset 0 0 5px #2A4F47;
-            box-shadow: inset 0 0 5px #2A4F47; 
+    background-color: var(--third-color);
+    -webkit-box-shadow: inset 0 0 5px var(--primary-color);
+            box-shadow: inset 0 0 5px var(--primary-color); 
     border-radius: 10px;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #2A4F47; 
+    background: var(--primary-color); 
     border-radius: 10px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #142418; 
+    background: var(--bg-color); 
   }.example {
       display: -ms-grid;
       display: grid;
