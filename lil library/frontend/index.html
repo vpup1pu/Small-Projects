@@ -21,7 +21,7 @@
     <main class="user">
         <div class="user-left"></div>
         <div class="user-right">
-            <form action="" class="form" method="post">
+            <form action="" class="form" method="post" id="loginForm">
                 <div class="form-input">
                     <label class="username">Username: </label>
                     <input type="text" id="username" placeholder="Your username" />
@@ -30,34 +30,38 @@
                     <label class="password">Password: </label>
                     <input type="text" id="password" placeholder="Your Password" />
                 </div>
-                <div>
+                <div class="spanError">
                     <button type="submit" id="login">Login</button>
-                </div>
-                <div class="options">
-                    <a href="#" class="reset">Forgot Username/Password?</a>
-                    <div class="dropdown">
-                        <a href="#" class="signup" onclick="dropdownFunction(event)">New here? Please sign up</a>
-                        <div id="myDropdown" class="dropdown-content">
-                            <form action="" class="form" method="post">
-                                <h3 id="userh3">Create an account</h3>
-                                <div class="form-input">
-                                    <label class="username">Choose an username: </label>
-                                    <input type="text" id="sUsername" />
-                                </div>
-                                <div class="form-input">
-                                    <label class="password">Choose a password: </label>
-                                    <input type="text" id="sPassword" />
-                                </div>
-                                <div class="form-input">
-                                    <label class="email">Email: </label>
-                                    <input type="email" id="sEmail" placeholder="youremail@something.com" />
-                                </div>
-                                <button type="submit" id="signUpBtn">Sign Up</button>
-                            </form>
-                        </div>
-                    </div>
+                    <span id="loginError">Something went wrong, try again</span>
                 </div>
             </form>
+            <div class="options">
+                <a href="#" class="reset">Forgot Username/Password?</a>
+                <div class="dropdown">
+                    <a href="#" class="signup" onclick="dropdownFunction(event)">New here? Please sign up</a>
+                    <div id="myDropdown" class="dropdown-content">
+                        <form action="" class="form" method="post" id="registerForm">
+                            <h3 id="userh3">Create an account</h3>
+                            <div class="form-input">
+                                <label class="username">Choose an username: </label>
+                                <input type="text" id="sUsername" />
+                            </div>
+                            <div class="form-input">
+                                <label class="password">Choose a password: </label>
+                                <input type="text" id="sPassword" />
+                            </div>
+                            <div class="form-input">
+                                <label class="email">Email: </label>
+                                <input type="email" id="sEmail" placeholder="youremail@something.com" />
+                            </div>
+                            <div class="spansReg">
+                                <button type="submit" id="signUpBtn">Sign Up</button>
+                                <span id="signUpSpan"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <footer>

@@ -15,11 +15,10 @@ const User = sequelize.define('User', {
     username: {
         type: DataTypes.STRING,
         allowNull: false,
-        primaryKey: true,
         unique: true
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
     },
     email: {
@@ -30,19 +29,6 @@ const User = sequelize.define('User', {
 }, {
     tableName: 'user',
     timestamps: false
-});
-
-//Probando la conexión
-sequelize.authenticate()
-.then(()=>{
-    console.log('Conexión exitosa');
-    return sequelize.sync();
-})
-.then(()=>{
-    console.log('Sincronización de User Model exitosa');
-})
-.catch(err =>{
-    console.error('Error al conectar a la db: ', err);
 });
 
 module.exports = User;

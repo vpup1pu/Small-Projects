@@ -1,0 +1,34 @@
+Me gustaría sincerarme con un error que cometí. Como en clase trabajamos con un array para simular una db, 
+no sabía cómo hacer el modelo de userModel.js. Entonces cometí el error de preguntarle a chatgpt, y me recomendó utilizar
+Sequelize. Me pareció más intuitivo, así que lo dejé. Pero cuando quise crear authController.js, entendí que no podía hacerlo
+de la manera en que lo habíamos practicado, ya que Sequelize se encontraba instalado en mi proyecto, y no le gusta cuando
+creo controladores que no siguen el formato de Sequelize. Por lo tanto, decidí crear este README para mostrar que entendí
+cómo crear las sentencias que manipulen la base de datos. Son más humildes, pero hacen la misma petición.
+
+--Registro de un usuario
+const register = (req, res) => {
+    const { username, password, email } = req.body;
+
+    const sql = 'INSERT INTO user (username, password, email) VALUES (?, ?, ?);';
+    const sql2 = 'INSERT INTO storage (user_iduser) VALUES (?);';
+
+    db.query(sql, [username, password, email], (err, result) => {
+        if (err) {
+            console.error("Error al insertar usuario:", err);
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
+
+        // Suponiendo que result contiene el ID del usuario insertado
+        const userId = result.insertId;
+
+        // Insertar en la tabla storage
+        db.query(sql2, [userId], (err, result) => {
+            if (err) {
+                console.error("Error al insertar en storage:", err);
+                return res.status(500).json({ error: 'Error interno del servidor' });
+            }
+
+            res.status(200).json({ message: 'Usuario registrado exitosamente' });
+        });
+    });
+};

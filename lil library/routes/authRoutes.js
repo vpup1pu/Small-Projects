@@ -12,4 +12,11 @@ router.get('/protected', authMiddleware, (req, res) => {
     res.status(200).send({ message: `Welcome, ${req.username}!` });
 });
 
+router.get('/:idstorage', authController.showUserLibrary);
+router.get('/search', authController.searchBook);
+router.post('/create', authController.createBook);
+router.post('/new/:idstorage', authController.addBooktoLibrary);
+router.put('/changestatus/:idstorage/:idbook', authController.changeStatus);
+router.delete('/delete/:idbook', authController.deleteBookFromLibrary);
+
 module.exports = router;
